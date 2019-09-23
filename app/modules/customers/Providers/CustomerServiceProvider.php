@@ -2,6 +2,7 @@
 
 namespace Customers\Providers;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 
 class CustomerServiceProvider extends ServiceProvider
@@ -24,8 +25,13 @@ class CustomerServiceProvider extends ServiceProvider
     public function boot()
     {
         $ds=DIRECTORY_SEPARATOR;
+        $moduleName= 'customers';
+        config([$moduleName=>File::getRequire(__DIR__.$ds.'..'.$ds.'config'.$ds.'route.php')]);
 
         $this->loadRoutesFrom(__DIR__.$ds.'..'.$ds.'routes'.$ds.'web.php');
+        $this->loadViewsFrom(__DIR__.$ds.'..'.$ds.'resources'.$ds.'views',$moduleName);
+
+//        dd(config());
 
     }
 }

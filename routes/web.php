@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//
+//Route::get('/',"\Customers\Http\Controllers\BackEnd\Customers@index");
+Route::get('/',function (){
+    return "HOME PAGE";
+});
+//Route::get('/frontend',"\Customers\Http\Controllers\FrontEnd\Customers@index");
 
-Route::get('/',"\Customers\Http\Controllers\BackEnd\Customers@index");
-Route::get('/frontend',"\Customers\Http\Controllers\FrontEnd\Customers@index");

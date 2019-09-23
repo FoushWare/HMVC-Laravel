@@ -13,12 +13,14 @@
 
 Route::namespace('Customers\Http\Controllers')->group(function (){
 
-    Route::prefix('backend')->namespace('BackEnd')->group(function (){
-        Route::get('customers','Customers@index');
+    Route::prefix(buildPrefix('customers','backend'))->namespace('BackEnd')->group(function (){
+        Route::get('all','Customers@index');
+//        dd("backend");
     });
 
-    Route::prefix('frontend')->namespace('FrontEnd')->group(function (){
-        Route::get('customers','Customers@index');
+    Route::prefix(buildPrefix('customers','frontend'))->namespace('FrontEnd')->group(function (){
+        Route::get('all','Customers@index');
     });
+
 
 });
